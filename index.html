@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library app</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/script.js" defer></script>
+</head>
+<body>
+
+    <div class="all-container">
+
+        <div class="pop-up">
+            <div class="pop-up-box">
+                <div class="pop-up-header">
+                    <h2>Create new book</h2>
+                    <button>x</button>
+                </div>
+                <form id="form">
+                    <div class="book-form-container">
+                        <label for="book-name">Title: *</label>
+                        <input type="text" id="book-name" name="bookName" placeholder="Title of book" maxlength="15" required>
+                    </div>
+                    <div class="book-form-container">
+                        <label for="book-author">Author: *</label>
+                        <input type="text" id="book-author" name="bookAuthor" placeholder="Author of book" maxlength="15" required>
+                    </div>
+                    <div class="book-form-container">
+                        <label for="book-pages">Pages: *</label>
+                        <input type="number" id="book-pages" name="bookPages" placeholder="How many pages" min="0" max="999" required>
+                    </div>
+                    <div class="book-isread-container">
+                        <label for="book-isRead">Have you read it?</label>
+                        <input type="checkbox" id="book-isRead" name="bookIsRead">
+                    </div>
+                    <button type="submit">Create</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="navbar">
+            <div class="nav-logo"><h1>Library</h1></div>
+            <div class="nav-btns-cont">
+                <div class="nav-signin">
+                    <button id="sign-in-btn">Sign in</button>
+                </div>
+                <div class="nav-signup">
+                    <button id="sign-up-btn">Sign up</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="m-addbook">
+                <button id="addbook-btn">+ Add book</button>
+            </div>
+            <div class="m-books-cont">
+                <div class="card">
+                    <div class="card-text">
+                        <h2>The Hobbit</h2>
+                        <h3>Author</h3>
+                        <h4>234 pages</h4>
+                    </div>
+                    <div class="card-buttons">
+                        <button id="read-button" class="read-true">Read</button>
+                        <button id="remove-button">Remove</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

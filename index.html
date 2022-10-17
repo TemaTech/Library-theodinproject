@@ -9,36 +9,52 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>Library</h1>
-    <button>+ Add book</button>
-    <div class="add-book-form-container">
-        <div class="book-close-form">
-            <button>x</button>
+    <div class="container">
+        <div class="form-container show">
+            <div class="pop-up">
+                <div class="pop-up-header">
+                    <h2>Add a new book</h2>
+                    <button>✖</button>
+                </div>
+                <form>
+                    <div class="title-inp">
+                        <label for="title-input">Title: *</label>
+                        <input type="text" id="title-input" value="">
+                    </div>
+                    <div class="author-inp">
+                        <label for="author-input">Author: *</label>
+                        <input type="text" id="author-input" value="">
+                    </div>
+                    <div class="pages-inp">
+                        <label for="pages-input">Pages: *</label>
+                        <input type="number" id="pages-input" value="">
+                    </div>
+                    <div class="read-inp">
+                        <label for="read-input">Have you read this book?</label>
+                        <input type="checkbox" id="read-input">
+                    </div>
+                    <button type="button">+ Add Book</button>
+                </form>
+            </div>
         </div>
-        <form>
-            <div class="book-title-form">
-                <label for="book-title-f">Title: *</label>
-                <input type="text" id="book-title-f" placeholder="Book title..." required>
+        <nav>
+            <div class="nav-logo"><h1>Library</h1></div>
+            <div class="nav-buttons">
+                <button id="signin">Sign In</button>
+                <button id="signup">Sign Up</button>
             </div>
-            <div class="book-author-form">
-                <label for="book-author-f">Author: *</label>
-                <input type="text" id="book-author-f" placeholder="Author of this book..." required>
+        </nav>
+        <div class="main-container">
+            <button id="addBtn">+ Add Book</button>
+            <div class="cards-container"></div>
+        </div>
+        <footer>
+            <div class="footer-components">
+                By Chernysh Artem © 2022
+                <a href="">My GitHub</a>
+                <a href="">My Twitter</a>
             </div>
-            <div class="book-pages-form">
-                <label for="book-pages">Pages: *</label>
-                <input type="number" id="book-pages-f" placeholder="How many pages in this book?" required>
-            </div>
-            <div class="book-isread-form">
-                <input type="checkbox" name="book-isread-f" id="book-isread-f">
-                <label for="book-isread-f">Have you read this book?</label>
-            </div>
-            <div class="book-submit-form">
-                <button>Create Book</button>
-            </div>
-        </form>
-    </div>
-    <div class="library-container">
-
+        </footer>
     </div>
 </body>
 </html>

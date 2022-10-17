@@ -1,110 +1,106 @@
+let myLibrary  = [];
 
-// Add, remove form popup. Add book to the library.
-const addBookBtn = document.querySelector('body button');
-const addBookContainer = document.querySelector('.add-book-form-container');
-const addButton = document.querySelector('.book-submit-form button');
-const closeForm = document.querySelector('.book-close-form');
-
-addBookBtn.addEventListener('click', () => {
-    addBookContainer.classList.add('show');
-})
-
-closeForm.addEventListener('click', () => {
-    addBookContainer.classList.remove('show');
-})
-
-addButton.addEventListener('click', addBookToLibrary);
-
-
-// Book constructor
 class Book {
     constructor(title, author, pages, read) {
-        this.title = form.title.value;
-        this.author = form.title.value;
-        this.pages = form.pages.value + "pages";
-        this.read = form.pages.value;
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
     }
 }
-
-
-// Creates book from a book constructor and adds it to the library.
-let myLibrary = [];
-let newBook;
 
 function addBookToLibrary() {
-    event.preventDefault();
-    addBookContainer.classList.remove('show');
-    newBook = new Book(title, author, pages, read);
-    myLibrary.push(newBook);
+    // Variables from input fields
+    const titleInp = document.querySelector('.title-inp input').value;
+    const authorInp = document.querySelector('.author-inp input').value;
+    const pagesInp = document.querySelector('.pages-inp input').value;
+    const readInp = document.querySelector('.read-inp input').checked;
+
+    // Check validity of inputs and if they are valid add them to the library
+    if (titleInp === '' || authorInp === '' || pagesInp === '') {
+        return alert("Please fill all inputs.");
+    } else {
+        // Create new book object
+        const newBookObj = new Book(titleInp, authorInp, pagesInp, readInp);
+
+        // Push new object into array
+        myLibrary.push(newBookObj);
+    }
+
+    // Render
     renderBook();
-    form.reset();
+
+    // Refresh inputs
+    titleInp.value,
+    authorInp.value,
+    pagesInp.value,
+    readInp.value = "";
 }
 
 
-// Renders book on the page.
+const submitAddBookBtn = document.querySelector('form button[type="button"]');
+
+submitAddBookBtn.addEventListener('click', addBookToLibrary);
+
+
+
+// Hide and show pop up window
+const popUp = document.querySelector('.form-container');
+
+document.querySelector('#addBtn').addEventListener('click', () => {
+    popUp.classList.add('show');
+})
+
+document.querySelector('.pop-up-header button').addEventListener('click', () => {
+    popUp.classList.remove('show');
+})
+
+
+
+// Render books
 function renderBook() {
-    const display = document.querySelector('.libary-container');
-    const books = document.querySelectorAll('.book');
-    books.forEach(book => display.removeChild(book));
+    const cardsContainer = document.querySelector('.cards-container');
+    for (let i = 0; i < this.length; i++) {
+        // Card container
+        const card = document.createElement('div');
+        card.classList.add('card');
 
-    for (let i = 0; i < myLibrary.length; i++) {
-        createBook(myLibrary[i]);
+        // Title container
+        const titleCont = document.createElement('div');
+        titleCont.classList.add('titleCont');
+        titleCont.textContent = myLibrary[i].title;
+        card.appendChild(titleCont);
+
+        // Author container
+        const authorCont = document.createElement('div');
+        authorCont.classList.add('authorCont');
+        authorCont.textContent = myLibrary[i].author;
+        card.appendChild(authorCont);
+
+        // Pages container
+        const pagesCont = document.createElement('div');
+        pagesCont.classList.add('pagesCont');
+        pagesCont.textContent = myLibrary[i].pages + 'pages';
+        card.appendChild(pagesCont);
+
+        // Read button
+        const readBtn = document.createElement('button');
+        if(myLibrary[i].read === true) {
+            readBtn.textContent = 'Read';
+            readBtn.style.background = '#4ade80';
+        } else {
+            readBtn.textContent = 'Not Read';
+            readBtn.style.background = '#f87171';
+        }
+        card.appendChild(readBtn);
+
+        // Remove button
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = 'Remove';
+        removeBtn.classList.add('removeBtn');
+        card.appendChild(removeBtn);
+
+        // Append card
+        cardsContainer.appendChild(card);
     }
 }
-
-
-// Creates book DOM elements, to use it later in renderBook();
-function createBook(item) {
-    const library = document.querySelector('#Library-container');
-    const bookDiv = document.createElement('div');
-    const titleDiv = document.createElement('div');
-    const authDiv = document.createElement('div');
-    const pageDiv = document.createElement('div');
-    const removeBtn = document.createElement('button');
-    const readBtn = document.createElement('button');
-    
-    
-    bookDiv.classList.add('book');
-    bookDiv.setAttribute('id', myLibrary.indexOf(item));
-
-    titleDiv.textContent = item.title;
-    titleDiv.classList.add('title');
-    bookDiv.appendChild(titleDiv);
-
-    authDiv.textContent = item.author;
-    authDiv.classList.add('author');
-    bookDiv.appendChild(authDiv);
-
-    pageDiv.textContent = item.pages;
-    pageDiv.classList.add('pages');
-    bookDiv.appendChild(pageDiv);
-
-    readBtn.classList.add('readBtn')    
-    bookDiv.appendChild(readBtn);
-    if(item.read===false) {
-        readBtn.textContent = 'Not Read';
-        readBtn.style.backgroundColor = '#e04f63';
-    }else {
-        readBtn.textContent = 'Read';
-        readBtn.style.backgroundColor = '#63da63'
-    }
-
-    removeBtn.textContent = 'Remove'; 
-    removeBtn.setAttribute('id', 'removeBtn');
-    bookDiv.appendChild(removeBtn);
-    
-    library.appendChild(bookDiv);
-
-    removeBtn.addEventListener('click', () => {
-        myLibrary.splice(myLibrary.indexOf(item),1);
-        setData()
-        render();
-    });
-
-    //add toggle ability to each book 'read' button on click
-    readBtn.addEventListener('click', () => { 
-        item.read = !item.read; 
-        setData(); 
-        render();
-    }); 
-};

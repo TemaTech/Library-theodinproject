@@ -1,285 +1,30 @@
-@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
 
 
-*, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
 
 html {
-    font-family: Poppins, sans-serif;
-    height: 100vh;
-    background: #fafafa;
-    color: #171717;
-}
-
-body {
     position: relative;
-}
-
-
-.nav-logo {
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.all-container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-}
-
-.navbar {
-    padding: 20px;
-    background: #e5e5e5;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav-btns-cont {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-}
-
-.nav-signin button {
-    border: none;
-    outline: none;
-    background: none;
-    color: inherit;
-    font-family: inherit;
-    font-size: 1rem;
-    border-radius: 10px;
-    padding: 10px;
-    transition: all 0.2s ease-in-out;
-}
-.nav-signin button:hover {
-    cursor: pointer;
-    background: #d4d4d4;
-}
-
-.nav-signup button {
-    border-radius: 10px;
-    transition: all 0.2s ease-in-out;
-    font-size: 1rem;
-    padding: 10px;
-    color: white;
-    font-family: inherit;
-    border: none;
-    outline: none;
-    background: #84cc16;
-}
-.nav-signup button:hover {
-    background: #65a30d;
-    cursor: pointer;
-}
-
-
-.main {
-    margin-top: 50px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    margin-left: 10%;
-    margin-right: 10%;
-}
-
-.m-addbook button {
-    border-radius: 10px;
-    transition: all 0.2s ease-in-out;
-    font-size: 1rem;
-    padding: 10px;
-    color: white;
-    font-family: inherit;
-    border: none;
-    outline: none;
-    background: #84cc16;
-}
-.m-addbook button:hover {
-    background: #65a30d;
-    cursor: pointer;
-}
-
-.m-books-cont {
-    width: 90vw;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 250px);
-    justify-content: center;
-    gap: 30px;
-}
-.card {
-    background: #ffedd5;
-    border-radius: 20px;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-}
-.card-text {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    gap: 10px;
-    color: #7c2d12;
-}
-.card-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-}
-.card-buttons button {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    font-family: inherit;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-}
-.card-buttons button:hover {
-    cursor: pointer;
-}
-
-#read-button:hover {
-    cursor: pointer;
-}
-.read-false {
-    background: #facc15 !important;
-    color: #fefce8;
-    font-weight: 500;
-}
-.read-true {
-    background: #a3e635 !important;
-    color: #f7fee7;
-    font-weight: 500;
-}
-#remove-button {
-    background: #b91c1c;
-    font-size: 1rem;
-    color: #fef2f2;
-}
-
-
-.pop-up {
-    position: absolute;
-    visibility: hidden;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-.pop-up-box {
-    background: white;
-    border-radius: 10px;
-    padding: 35px;
+.add-book-form-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.301);
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    gap: 25px;
+    align-items: center;
+    visibility: hidden;
 }
 
 .show {
-    visibility: visible !important;
+    visibility: visible;
 }
-
-.pop-up-header {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.pop-up-header button {
-    border: none;
-    outline: none;
-    width: 30px;
-    height: 30px;
-    background: #f5f5f5;
-    border-radius: 99px;
-    font-size: 1rem;
-    color: #d4d4d4;
-}
-.pop-up-header button:hover {
-    background: #ebebeb;
-    cursor: pointer;
-}
-
 
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.book-form-container {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    gap: 10px;
-}
-
-.book-form-container label {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #171717;
-}
-
-.book-form-container input {
-    outline: none;
-    background: none;
-    border: 2px solid #262626;
-    padding: 8px;
-    font-family: inherit;
-    font-size: inherit;
-    border-radius: 10px;
-}
-
-.book-isread-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.book-isread-container label:hover,
-.book-isread-container input:hover {
-    cursor: pointer;
-}
-
-form button {
-    border-radius: 10px;
-    border: none;
-    outline: none;
-    background: #a3e635;
-    color: #f7fee7;
-    font-size: 1.2rem;
-    padding: 8px;
-    font-weight: bold;
-}
-form button:hover {
-    cursor: pointer;
-    background: #84cc16;
-}
-
-form input:focus:invalid {
-    border: 2px solid #dc2626;
+    background: white;
+    padding: 15px;
 }

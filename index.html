@@ -4,74 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library app</title>
+    <title>Library</title>
     <link rel="stylesheet" href="style.css">
-    <script src="/script.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-
-    <div class="all-container">
-
-        <div class="pop-up">
-            <div class="pop-up-box">
-                <div class="pop-up-header">
-                    <h2>Create new book</h2>
-                    <button>x</button>
-                </div>
-                <form id="form">
-                    <div class="book-form-container">
-                        <label for="book-name">Title: *</label>
-                        <input type="text" id="book-name" name="bookName" placeholder="Title of book" maxlength="15" required>
-                    </div>
-                    <div class="book-form-container">
-                        <label for="book-author">Author: *</label>
-                        <input type="text" id="book-author" name="bookAuthor" placeholder="Author of book" maxlength="15" required>
-                    </div>
-                    <div class="book-form-container">
-                        <label for="book-pages">Pages: *</label>
-                        <input type="number" id="book-pages" name="bookPages" placeholder="How many pages" min="0" max="999" required>
-                    </div>
-                    <div class="book-isread-container">
-                        <label for="book-isRead">Have you read it?</label>
-                        <input type="checkbox" id="book-isRead" name="bookIsRead">
-                    </div>
-                    <button type="submit">Create</button>
-                </form>
-            </div>
+    <h1>Library</h1>
+    <button>+ Add book</button>
+    <div class="add-book-form-container">
+        <div class="book-close-form">
+            <button>x</button>
         </div>
-
-        <div class="navbar">
-            <div class="nav-logo"><h1>Library</h1></div>
-            <div class="nav-btns-cont">
-                <div class="nav-signin">
-                    <button id="sign-in-btn">Sign in</button>
-                </div>
-                <div class="nav-signup">
-                    <button id="sign-up-btn">Sign up</button>
-                </div>
+        <form>
+            <div class="book-title-form">
+                <label for="book-title-f">Title: *</label>
+                <input type="text" id="book-title-f" placeholder="Book title..." required>
             </div>
-        </div>
-
-        <div class="main">
-            <div class="m-addbook">
-                <button id="addbook-btn">+ Add book</button>
+            <div class="book-author-form">
+                <label for="book-author-f">Author: *</label>
+                <input type="text" id="book-author-f" placeholder="Author of this book..." required>
             </div>
-            <div class="m-books-cont">
-                <div class="card">
-                    <div class="card-text">
-                        <h2>The Hobbit</h2>
-                        <h3>Author</h3>
-                        <h4>234 pages</h4>
-                    </div>
-                    <div class="card-buttons">
-                        <button id="read-button" class="read-true">Read</button>
-                        <button id="remove-button">Remove</button>
-                    </div>
-                </div>
+            <div class="book-pages-form">
+                <label for="book-pages">Pages: *</label>
+                <input type="number" id="book-pages-f" placeholder="How many pages in this book?" required>
             </div>
-        </div>
+            <div class="book-isread-form">
+                <input type="checkbox" name="book-isread-f" id="book-isread-f">
+                <label for="book-isread-f">Have you read this book?</label>
+            </div>
+            <div class="book-submit-form">
+                <button>Create Book</button>
+            </div>
+        </form>
+    </div>
+    <div class="library-container">
 
     </div>
-
 </body>
 </html>

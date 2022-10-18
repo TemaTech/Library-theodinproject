@@ -1,3 +1,8 @@
+const cardsContainer = document.querySelector('.cards-container');
+
+
+
+
 let myLibrary  = [];
 
 class Book {
@@ -27,22 +32,23 @@ function addBookToLibrary() {
         myLibrary.push(newBookObj);
     }
 
-    // Render
-    renderBook();
+    popUp.classList.remove('show');
 
-    // Refresh inputs
-    titleInp.value,
-    authorInp.value,
-    pagesInp.value,
-    readInp.value = "";
+    // Refresh input fields
+    document.querySelector('.title-inp input').value = '';
+    document.querySelector('.author-inp input').value = '';
+    document.querySelector('.pages-inp input').value = '';
+    document.querySelector('.read-inp input').checked = '';
 }
 
+function addBookAndRender() {
+    addBookToLibrary();
+    renderBook();
+}
 
 const submitAddBookBtn = document.querySelector('form button[type="button"]');
 
-submitAddBookBtn.addEventListener('click', addBookToLibrary);
-
-
+submitAddBookBtn.addEventListener('click', addBookAndRender);
 
 // Hide and show pop up window
 const popUp = document.querySelector('.form-container');
@@ -55,12 +61,9 @@ document.querySelector('.pop-up-header button').addEventListener('click', () => 
     popUp.classList.remove('show');
 })
 
-
-
-// Render books
 function renderBook() {
-    const cardsContainer = document.querySelector('.cards-container');
-    for (let i = 0; i < this.length; i++) {
+    cardsContainer.replaceChildren();
+    for (let i = 0; i < myLibrary.length; i++) {
         // Card container
         const card = document.createElement('div');
         card.classList.add('card');
@@ -68,7 +71,7 @@ function renderBook() {
         // Title container
         const titleCont = document.createElement('div');
         titleCont.classList.add('titleCont');
-        titleCont.textContent = myLibrary[i].title;
+        titleCont.textContent =  '"' + myLibrary[i].title + '"';
         card.appendChild(titleCont);
 
         // Author container
@@ -80,11 +83,12 @@ function renderBook() {
         // Pages container
         const pagesCont = document.createElement('div');
         pagesCont.classList.add('pagesCont');
-        pagesCont.textContent = myLibrary[i].pages + 'pages';
+        pagesCont.textContent = myLibrary[i].pages + ' pg';
         card.appendChild(pagesCont);
 
         // Read button
         const readBtn = document.createElement('button');
+        readBtn.classList.add('readBtn');
         if(myLibrary[i].read === true) {
             readBtn.textContent = 'Read';
             readBtn.style.background = '#4ade80';
@@ -92,6 +96,17 @@ function renderBook() {
             readBtn.textContent = 'Not Read';
             readBtn.style.background = '#f87171';
         }
+        readBtn.addEventListener('click', () => {
+            if (myLibrary[i].read === true) {
+                myLibrary[i].read = false;
+                readBtn.textContent = 'Not Read';
+                readBtn.style.background = '#f87171';
+            } else {
+                myLibrary[i].read = true;
+                readBtn.textContent = 'Read';
+                readBtn.style.background = '#4ade80';
+            }
+        })
         card.appendChild(readBtn);
 
         // Remove button
@@ -99,8 +114,12 @@ function renderBook() {
         removeBtn.textContent = 'Remove';
         removeBtn.classList.add('removeBtn');
         card.appendChild(removeBtn);
+        removeBtn.addEventListener('click', () => {
+            cardsContainer.removeChild(card);
+            return myLibrary.splice(i);
+        });
 
-        // Append card
+        // Append
         cardsContainer.appendChild(card);
     }
 }

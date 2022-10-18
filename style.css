@@ -39,6 +39,7 @@ html {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    border-radius: 5px;
 }
 
 .pop-up-header {
@@ -190,3 +191,67 @@ footer a {
     color: #171717;
 }
 
+
+.cards-container {
+    flex: 1;
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 250px);
+    gap: 15px;
+    justify-content: center;
+}
+
+.card {
+    background: #e4e4e4;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.titleCont {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.authorCont {
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+.pagesCont {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.readBtn {
+    width: 100%;
+    padding: 10px;
+    font-family: inherit;
+    color: #fafafa;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+.readBtn:hover {
+    cursor: pointer;
+}
+
+.removeBtn {
+    width: 100%;
+    padding: 10px;
+    font-family: inherit;
+    color: #fafafa;
+    background: #b91c1c;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+.removeBtn:hover {
+    cursor: pointer;
+}
